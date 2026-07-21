@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.content.OperationApplicationException;
+
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -8,21 +10,21 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
-@TeleOp
 public class FlywheelPIDF_test extends OpMode {
+    private static final double NOMINAL_VOLTAGE = 12.0;
+
     public DcMotorEx Turret_S;
-    public static double SHOOTING_VELOCITY = 2400;
+    public static double SHOOTING_VELOCITY = 2000;
     public static double PREHEAT_VELOCITY  = 1000;
 
     double curTargetVelocity = PREHEAT_VELOCITY;
-    public static double F = 0;
-    public static double P = 0;
+    public static double F = 17;
+    public static double P = 200;
 
     double[] stepSizes = {10.0, 1.0, 0.1, 0.001};
 
     int stepIndex = 1;
 
-    @Override
     public void init() {
         Turret_S = hardwareMap.get(DcMotorEx.class, "Turret_S");
         Turret_S.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -30,15 +32,18 @@ public class FlywheelPIDF_test extends OpMode {
 
         PIDFCoefficients pidfCoefficients = new PIDFCoefficients(P,0,0, F);
         Turret_S.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, pidfCoefficients);
+        telemetry.addLine("Init complete");
+
     }
 
-    @Override
     public void loop() {
 
         if(gamepad1.yWasPressed()) {
             if(curTargetVelocity == PREHEAT_VELOCITY) {
                 curTargetVelocity = SHOOTING_VELOCITY;
-            } else{curTargetVelocity = PREHEAT_VELOCITY;}
+            }
+            else {
+                curTargetVelocity = SHOOTING_VELOCITY;}
         }
         if(gamepad1.bWasPressed()) {
             stepIndex = (stepIndex + 1) % stepSizes.length;
