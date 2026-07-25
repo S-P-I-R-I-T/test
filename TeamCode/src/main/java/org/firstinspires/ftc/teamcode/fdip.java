@@ -16,7 +16,7 @@ public class fdip extends OpMode {
     public static double shooting_velocity = 2000;
     public static double preheat_velocity = 1000;
 
-    public static double f = 17;
+    public static double f = 18;
     public static double p = 200;
     @Override
     public void init() {
