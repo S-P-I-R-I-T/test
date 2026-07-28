@@ -18,6 +18,7 @@ public class fdip extends OpMode {
 
     public static double f = 20;
     public static double p = 200;
+
     @Override
     public void init() {
         Turret_S = hardwareMap.get(DcMotorEx.class,"Turret_S");
