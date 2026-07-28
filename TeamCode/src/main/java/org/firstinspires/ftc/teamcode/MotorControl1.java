@@ -4,13 +4,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import java.lang.annotation.Target;
-
-public class MotorControl {
+public class MotorControl1 {
     private DcMotor motor;
     private static final String Motor_Name = "motor";
 
-    public MotorControl(HardwareMap hardwareMap) {
+    public MotorControl1(HardwareMap hardwareMap) {
         motor = hardwareMap.get(DcMotor.class,"Motor_Name");
         motor.setDirection(DcMotorSimple.Direction.FORWARD);
         motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

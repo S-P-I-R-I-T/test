@@ -3,13 +3,13 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "Motorcontrol_exam")
-public class Motorcontrol_exam extends LinearOpMode {
+@TeleOp(name = "Motorcontrol_example")
+public class Motorcontrol_example extends LinearOpMode {
 
     @Override
     public void runOpMode() {
 
-        MotorControl motorControl = new MotorControl(hardwareMap);
+        MotorControl1 motorControl = new MotorControl1(hardwareMap);
         waitForStart();
 
         if (opModeIsActive()) {
