@@ -3,14 +3,15 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-@TeleOp(name = "test6")
+@TeleOp(name = "test6") //인테이크
 public class test6 extends LinearOpMode {
     ActionClass action;
 
     @Override
     public void runOpMode() {
-        initIntake();
         Init();
+        initIntake();
+
 
         waitForStart();
 
