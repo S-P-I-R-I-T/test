@@ -7,18 +7,21 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class aa extends LinearOpMode {
 
     ActionClass act;
+    Mecanum_Driving md;
 
 
     @Override
     public void runOpMode() {
 
         act = new ActionClass(hardwareMap);
+        md = new Mecanum_Driving(hardwareMap);
 
         waitForStart();
 
         if (opModeIsActive()) {
             // Pre-run
             while (opModeIsActive()) {
+                md.drive(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
                 Intake();
             }
         }
@@ -28,10 +31,10 @@ public class aa extends LinearOpMode {
             act.Intake_On();
         }
         else if (gamepad1.b) {
-            act.Intake_Off();
+            act.Intake_R();
         }
         else {
-            act.Intake_R();
+            act.Intake_Off();
         }
     }
 }
