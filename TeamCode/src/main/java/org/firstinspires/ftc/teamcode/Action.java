@@ -23,7 +23,6 @@ public class Action extends LinearOpMode {
     }
 
     public void initAction() {
-        // 슈팅
         if (gamepad2.right_trigger > 0.1) {
             action.shoot();
         } else if (gamepad2.left_trigger > 0.1) {
@@ -32,7 +31,6 @@ public class Action extends LinearOpMode {
             action.shootMotor.setVelocity(0);
         }
 
-        // 인테이크
         if (gamepad2.a) {
             action.Intake_On();
         } else if (gamepad2.b) {

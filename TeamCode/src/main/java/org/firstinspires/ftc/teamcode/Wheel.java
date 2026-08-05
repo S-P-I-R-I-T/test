@@ -13,7 +13,7 @@ public class Wheel extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            driveControl();
+            initWheel();
             telemetry.update();
         }
     }
@@ -22,7 +22,7 @@ public class Wheel extends LinearOpMode {
         wheel = new WheelClass(hardwareMap);
     }
 
-    public void driveControl() {
+    public void initWheel() {
         double axial = -gamepad1.left_stick_y;
         double lateral = gamepad1.left_stick_x;
         double yaw = gamepad1.right_stick_x;
