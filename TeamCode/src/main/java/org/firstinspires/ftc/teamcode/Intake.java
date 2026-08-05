@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Intake {
     private final DcMotor intake;
-    private static final double INTAKE_POWER = 1.0;
-    private static final double OUTTAKE_POWER = -1.0;
+    private static final double INTAKE_POWER = 0.8;
+    private static final double OUTTAKE_POWER = -0.8;
     public Intake(HardwareMap hardwareMap) {
         intake = hardwareMap.get(DcMotor.class,"intake");
 
