@@ -7,9 +7,12 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.opencv.core.Mat;
 
 public class Wheel {
-    private DcMotor fl, fr, rl, rr;
-    private static final double Base_Speed = 0.7;
-    private static final double Slow_Multiplier = 0.5;
+    private final DcMotor fl;
+    private final DcMotor fr;
+    private final DcMotor rl;
+    private final DcMotor rr;
+    private static final double NORMAL_SPEED = 0.7;
+    private static final double Slow_MULTIPLIER = 0.5;
     public Wheel(HardwareMap hardwareMap) {
         fl = hardwareMap.get(DcMotor.class,"fl");
         rl = hardwareMap.get(DcMotor.class,"rl");
@@ -18,23 +21,19 @@ public class Wheel {
 
         fl.setDirection(DcMotorSimple.Direction.REVERSE);
         rl.setDirection(DcMotorSimple.Direction.REVERSE);
+
         fr.setDirection(DcMotorSimple.Direction.FORWARD);
         rr.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        fl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        rr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        DcMotor[] motors = {fl, fr, rl, rr};
+        for (DcMotor motor : motors) {
+            motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        }
     }
 
     public void drive(double axial,double lateral,double yaw,boolean slow) {
 
-        double speed;
-        if (slow) {
-            speed = Base_Speed * Slow_Multiplier;
-        } else {
-            speed = Base_Speed;
-        }
+        double speed = slow ? NORMAL_SPEED * Slow_MULTIPLIER : NORMAL_SPEED;
         double flpower = axial + lateral + yaw;
         double frpower = axial - lateral - yaw;
         double rlpower = axial - lateral + yaw;
