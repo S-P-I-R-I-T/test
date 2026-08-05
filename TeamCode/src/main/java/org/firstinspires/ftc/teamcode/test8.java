@@ -13,7 +13,7 @@ public class test8 extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            initwheel();
+            initWheel();
             telemetry.update();
         }
     }
@@ -22,7 +22,7 @@ public class test8 extends LinearOpMode {
         wheel = new Wheel(hardwareMap);
     }
 
-    public void initwheel() {
+    public void initWheel() {
         double axial = -gamepad1.left_stick_y;
         double lateral = gamepad1.left_stick_x;
         double yaw = gamepad1.right_stick_x;
